@@ -20,6 +20,7 @@
         gap: 10px;
         align-items: center;
         justify-content: center;
+        text-align: center;
       }
 
       .container {
@@ -40,7 +41,7 @@
         background-color: rgb(4, 0, 0);
         color: rgb(216, 207, 207);
         border: 1px solid rgb(95, 95, 179);
-        font-size: 8px;
+        font-size: 15px;
         cursor: pointer;
         padding: 3px;
         border-radius: 5px;
@@ -48,7 +49,7 @@
 
       h3 {
         color: white;
-        font-size: 15px;
+        font-size: 20px;
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
       }
@@ -58,8 +59,8 @@
         border: 0;
         width: 60%;
         padding: 0 10px;
-        height: 30px;
-        font-size: 10px;
+        height: 40px;
+        font-size: 13px;
       }
 
       #output {
@@ -69,14 +70,14 @@
         /* border-radius: 5px; */
         width: 65%;
         height: 15vh;
-        font-size: 10px;
+        font-size: 13px;
         font-family: Arial, Helvetica, sans-serif;
         padding: 5px;
         text-align: center;
       }
 
       input::placeholder {
-        font-size: 10px;
+        font-size: 13px;
         color: rgba(0, 0, 0, 0.282);
         font-family: "Times New Roman", Times, serif;
       }
@@ -89,10 +90,10 @@
 
       .manual p{
         color: white;
-        font-size: 7px;
-        line-height: 15px;
+        font-size: 12px;
+        line-height: 30px;
         background-color: rgb(15, 15, 15);
-        width: 250px;
+        width: 340px;
         padding: 10px;
         border-radius: 5px;
         font-family: Arial, Helvetica, sans-serif;
@@ -110,13 +111,14 @@
         top: 10%;
         left: 30%; */
         color: white;
+        font-size: 50px;
         /* z-index: 0; */
       }
 
     </style>
   </head>
   <body>
-    <div class="manual">
+    <div class="manual" tabindex="0">
         <button class="how">How to Play</button>
         <p class="drop">How to Play the Guessing Game <br>
             1. <b>Objective:</b> Guess the correct number between 1 and 10. <br>
@@ -134,7 +136,7 @@
             4.	Pro Tip: Keep trying! You never know when you'll get lucky. <br>
             5.	Have Fun!</p>
     </div>
-        <main>
+        <main tabindex="0">
             <h1>Guessing Game!</h1>
         <div class="container">
             <h3>Input a number between 1-10</h3>
