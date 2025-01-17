@@ -1,151 +1,147 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guessing Game</title>
     <style>
-     *{
-        padding: 0;
+      /* General Reset */
+      * {
         margin: 0;
-        /* box-sizing: border-box; */
-     }
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-      main {
-        background-color: rgb(105, 105, 109);
-        width: 100%;
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #4e54c8, #8f94fb);
         height: 100vh;
         display: flex;
-        flex-direction: column;
-        gap: 10px;
         align-items: center;
         justify-content: center;
-        text-align: center;
       }
 
-      .container {
-        background-color: rgb(105, 105, 109);
-        box-shadow: 5px 5px 5px rgb(49, 48, 48);
-        width: 40%;
-        height: 40vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+      main {
+        background-color: #ffffff;
+        width: 90%;
+        max-width: 400px;
         padding: 20px;
-        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         text-align: center;
       }
 
-      button {
-        background-color: rgb(4, 0, 0);
-        color: rgb(216, 207, 207);
-        border: 1px solid rgb(95, 95, 179);
-        font-size: 15px;
-        cursor: pointer;
-        padding: 3px;
-        border-radius: 5px;
+      h1 {
+        font-size: 2rem;
+        color: #4e54c8;
+        margin-bottom: 15px;
       }
 
       h3 {
-        color: white;
-        font-size: 20px;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 10px;
       }
 
       input {
-        outline: none;
-        border: 0;
-        width: 60%;
-        padding: 0 10px;
+        width: 100%;
         height: 40px;
-        font-size: 13px;
+        margin-bottom: 15px;
+        padding: 5px 10px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+      }
+
+      input:focus {
+        border-color: #4e54c8;
+        box-shadow: 0 0 5px rgba(78, 84, 200, 0.4);
+      }
+
+      button {
+        background-color: #4e54c8;
+        color: white;
+        border: none;
+        font-size: 1rem;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #3c41a0;
       }
 
       #output {
-        color: white;
-        background-color: rgba(49, 48, 48, 0.52);
-        border: 1px solid black;
-        /* border-radius: 5px; */
-        width: 65%;
-        height: 15vh;
-        font-size: 13px;
-        font-family: Arial, Helvetica, sans-serif;
-        padding: 5px;
-        text-align: center;
-      }
-
-      input::placeholder {
-        font-size: 13px;
-        color: rgba(0, 0, 0, 0.282);
-        font-family: "Times New Roman", Times, serif;
-      }
-
-    .manual{
-        position: fixed;
-        top: 10%;
-        left: 2%;
-    }
-
-      .manual p{
-        color: white;
-        font-size: 12px;
-        line-height: 30px;
-        background-color: rgb(15, 15, 15);
-        width: 340px;
+        margin-top: 15px;
         padding: 10px;
+        background-color: #f4f4f4;
         border-radius: 5px;
-        font-family: Arial, Helvetica, sans-serif;
-        display: none;
-        /* z-index: 888; */
+        color: #555;
+        font-size: 1rem;
+        border: 1px solid #ddd;
       }
 
-      .manual:focus-within .drop{
-        display: block;
+      .manual {
         position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 0.9rem;
       }
 
-      h1{
-        /* position: fixed;
-        top: 10%;
-        left: 30%; */
+      .manual button {
+        background-color: #3c41a0;
         color: white;
-        font-size: 50px;
-        /* z-index: 0; */
+        border: none;
+        font-size: 0.9rem;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
       }
 
+      .manual button:hover {
+        background-color: #2e3180;
+      }
+
+      .manual p {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        color: #333;
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+      }
+
+      .manual:focus-within .drop {
+        display: block;
+      }
     </style>
   </head>
   <body>
     <div class="manual" tabindex="0">
-        <button class="how">How to Play</button>
-        <p class="drop">How to Play the Guessing Game <br>
-            1. <b>Objective:</b> Guess the correct number between 1 and 10. <br>
-            2.	How to Play:
-            	Enter a number (1-10) in the input field. <br>
-                Press the “Check” button to submit your guess. <br>
-            3.	Rules: <br>
-                The game will randomly generate a number between 1 and 10. <br>
-            	If your guess matches the generated number, you'll see:
-         “BOOM! You guessed the correct number!” <br>
-            	If your guess is incorrect, the game will tell you the correct number and encourage you to try again.
-        For example:
-        “Your guess (5) is not the right number; it's 7.” <br>
-            	If you enter a number outside the range 1-10, the game will warn you to: “Please input a valid number between 1 and 10.” <br>
-            4.	Pro Tip: Keep trying! You never know when you'll get lucky. <br>
-            5.	Have Fun!</p>
+      <button class="how">How to Play</button>
+      <p class="drop">
+        <b>How to Play the Guessing Game:</b><br />
+        1. Guess the correct number between 1 and 10.<br />
+        2. Enter your guess in the input field.<br />
+        3. Press "Check" to see the result.<br />
+        4. If incorrect, the game will show the right number.<br />
+        5. Keep trying and have fun!
+      </p>
     </div>
-        <main tabindex="0">
-            <h1>Guessing Game!</h1>
-        <div class="container">
-            <h3>Input a number between 1-10</h3>
-            <input type="number" id="input" placeholder="Input Number" />
-            <button onclick="checkGuess()">Check</button>
-            <div id="output"></div>
-          </div>
+    <main>
+      <h1>Guessing Game!</h1>
+      <div class="container">
+        <h3>Input a number between 1-10</h3>
+        <input type="number" id="input" placeholder="Enter a number" />
+        <button onclick="checkGuess()">Check</button>
+        <div id="output"></div>
+      </div>
     </main>
-    
   </body>
 </html>
 
